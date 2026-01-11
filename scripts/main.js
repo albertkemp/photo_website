@@ -1,6 +1,5 @@
-const elements = document.querySelectorAll("#Melbourne", "#Bermagui", "#Botanics", "#Metung", "#PortFairy", "#Qld", "#WTP", "#Misc");
+const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc");
 const [Melbourne, Bermagui, Botanics, Metung, PortFairy, Qld, WTP, Misc] = elements;
-
 let pageData;
 
 fetch('data/index.json')
