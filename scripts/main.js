@@ -1,5 +1,5 @@
-const elements = document.querySelectorAll("#Melbourne", "#Bermagui", "#Botanics", "#Metung", "#PortFairy", "#Qld", "#WTP", "#Misc", "#Contact");
-const [Melbourne, Bermagui, Botanics, Metung, PortFairy, Qld, WTP, Misc, Contact] = elements;
+const elements = document.querySelectorAll("#Melbourne", "#Bermagui", "#Botanics", "#Metung", "#PortFairy", "#Qld", "#WTP", "#Misc");
+const [Melbourne, Bermagui, Botanics, Metung, PortFairy, Qld, WTP, Misc] = elements;
 
 let pageData;
 
