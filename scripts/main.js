@@ -5,7 +5,7 @@ let pageData;
 fetch('data/index.json')
   .then(response => response.json())
   .then(data => {
-      pageData = data;
+      pageData = data.pages;
       console.log(pageData)
       renderPage();
   })
