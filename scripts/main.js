@@ -14,14 +14,30 @@ fetch('data/index.json')
   });
 function renderPage() {
     elements.forEach(btn => {
-        btn.addEventListener("click", (e) => {
+        btn.addEventListener("click", async (e) => {
             console.log(e.target.id);
             const folder_name = pageData[e.target.id].folder_name;
             const folder_number = pageData[e.target.id].folder_number;
             const container = document.body.querySelector("#container");
             container.innerHTML = "";
-            for (let i = 0; i < folder_number; i++) {
-                container.insertAdjacentHTML('beforeend', `<img src="images/${folder_name}/img${i}.JPG" height="200" title="&copy; Albert Kemp">`);
+            for (let i = 1; i <= folder_number; i++) {
+                
+                await new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = `images/${folder_name}/img${i}.JPG`;
+                    img.height = 200;
+                    img.title = "© Albert Kemp";
+        
+                    img.onload = () => {
+                        container.appendChild(img);
+                        resolve();
+                    };
+        
+                    img.onerror = () => {
+                        console.log(`Skipping img${i}`);
+                        resolve();
+                    };
+                });
             }
         });
     });
