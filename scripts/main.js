@@ -6,19 +6,23 @@ fetch('data/index.json')
   .then(response => response.json())
   .then(data => {
       pageData = data;
+      console.log(pageData)
+      renderPage();
   })
   .catch(error => {
     console.error('Error fetching the JSON file:', error);
   });
-
-elements.forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    const folder_name = pageData[e.target.id].folder_name;
-    const folder_number = pageData[e.target.id].folder_number;
-    const container = document.body.querySelector("#container");
-    container.innerHTML = "";
-    for (i = 0; i < folder_number; i++) {
-        container.append(`<img src="images/${folder_name}/img${i}.JPG" height="200" title="&copy; Albert Kemp">`);
-    }
-  });
-});
+function renderPage() {
+    elements.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            console.log(e.target.id);
+            const folder_name = pageData[e.target.id].folder_name;
+            const folder_number = pageData[e.target.id].folder_number;
+            const container = document.body.querySelector("#container");
+            container.innerHTML = "";
+            for (let i = 0; i < folder_number; i++) {
+                container.insertAdjacentHTML('beforeend', `<img src="images/${folder_name}/img${i}.JPG" height="200" title="&copy; Albert Kemp">`);
+            }
+        });
+    });
+}
