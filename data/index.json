@@ -1,0 +1,60 @@
+{
+    "pages": {
+        "Melbourne": {
+            "folder_name": "Melbourne",
+            "title": "Melbourne",
+            "folder_number": "55",
+            "description": "Despite being a big city, Melbourne has a large variety of birdlife. This collection illustrates the beautiful and charming birdlife that surrounds people every day.",
+            "bg_image_num": "42"
+        },
+        "Bermagui": {
+            "folder_name": "Bermagui",
+            "title": "Bermagui",
+            "folder_number": "62",
+            "description": "Bermagui and nearby Wallaga Lake are a pristine but charming place. Australian Pelicans and Eastern Reef Egrets wander around Wallaga Lake while Bermagui's quaint surroundings provide a great backdrop for local birds.",
+            "bg_image_num": "27"
+        },
+        "Botanics": {
+            "folder_name": "Botanics",
+            "title": "Botanics",
+            "folder_number": "13",
+            "description": "The Royal Botanic Gardens, while being in Melbourne surprised me with the variety and energy of the photos. This group of photos attempts to capture the energy and environment of the gulls and swamphens while illustrating the tranquil Nankeen Night Herons that lurk on the lake.",
+            "bg_image_num":  "8"
+        }, 
+        "Metung": {
+            "folder_name": "Metung",
+            "title": "Metung",
+            "folder_number": "9",
+            "description": "Metung is not a highlight birding site but the golden glow on the lake provides for some great photos of waterbirds, and the trails allowed me to see some inland birds",
+            "bg_image_num": "2"
+        },
+        "Misc": {
+            "folder_name": "Misc",
+            "title": "Misc",
+            "folder_number": "6",
+            "description": "The Miscellaneous folder should be brimming with bird photos and may see some improvement in the coming months but currently it has some humble photos from Sandridge (Melbourne) and Anglesea",
+            "bg_image_num": "6"
+        },
+        "PortFairy": {
+            "folder_name": "PortFairy",
+            "title": "Port Fairy",
+            "folder_number": "31",
+            "description": "When My Pelagic trip off Port Fairy was cancelled I had some fun looking at all of the local birds in the area. (The seabirds are from my later successful Pelagic trip)",
+            "bg_image_num": "20"
+        },
+        "Qld": {
+            "folder_name": "Qld",
+            "title": "Queensland",
+            "folder_number": "45",
+            "description": "For birds, Queensland is great. The birds shown are not really Queensland specialties and are mostly shorebirds off the Great Barrier Reef. Note the Gull-billed Tern in the background image, seen on Fraser Island.",
+            "bg_image_num": "33"
+        },
+        "WTP": {
+            "folder_name": "WTP",
+            "title": "Western Treatment Plant",
+            "folder_number": "71",
+            "description": "It's called the Western Treatment Plant but I simply call it Werribee. For birds, it's a heaven with countless waterbirds, shorebirds and even raptors. The images speak for themselves.",
+            "bg_image_num": "41"
+        }
+    }
+}
