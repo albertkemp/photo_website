@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('Lato-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('Comfortaa-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: url('Inter18pt-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+#fsc {
+    width: 100vw;
+    height: 100vh;
+    position:fixed;
+    background-color: rgba(255, 245, 238, 0.9);
+    display:none;
+    text-align:center;
+    padding:5%;
+    top:0;
+    left:0;
+    z-index: 10;
+}
+#fsc img {
+    height:80%;
+}
+.background {
+    width: 100vw;
+    height: 25vh;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    left:0;
+    top:40px;
+}
+h1{
+    font-family: 'Comfortaa', sans-serif;
+}
+.background h1{color:white;}
+.background img{
+    width: 100%;
+    top:0;
+    left:0;
+}
+.cover{
+    position: absolute;
+    top: 25%;
+    height: 50%;
+    width:100%;
+    left:0;
+    background-color: #deeae4;
+    text-align: center;
+}
+h2{
+    font-family: 'Lato', sans-serif;
+}
+p{
+    font-family: 'Inter 18pt', sans-serif;
+}
+nav{
+    background-color: #f0f4f4;
+    height: 40px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+nav button {
+    padding:10px;
+    border:none;
+    background-color: #f0f4f4;
+    color: black;
+    font-family: 'Inter 18pt', sans-serif;
+}
+.link {
+    background-color: #00000000;
+    text-decoration: underline;
+    font-family: 'Inter 18pt', sans-serif;
+    border:none;
+    padding:0;
+}
+#lod{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 0.92;
+    background-color: seashell;
+    top:0;
+    left:0;
+    text-align: center;
+    display: none;
+    z-index: 10;
+}
+footer{
+    position:fixed;
+    bottom:0;
+    left: 0;
+    width: 100vw;
+    background-color: #f0f4f4;
+    text-align: center;
+    padding: 10px;
+}
+body {
+    width:100vw;
+    height:100vh;
+}
