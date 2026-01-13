@@ -19,11 +19,11 @@ fetch('data/index.json')
       pageData = data.pages;
       console.log(pageData)
       renderPage();
-      backBurner();
+      //backBurner();
   })
   .catch(error => {
     console.error('Error fetching the JSON file:', error);
-  });
+  });/*
 async function backBurner() {
     for (data in pageData) {
         for (let i = 0; i < Math.floor(pageData[data].folder_number/2); i++) {
@@ -33,7 +33,7 @@ async function backBurner() {
             }
         }
     }
-}
+}*/
 function renderPage() {
     elements.forEach(btn => {
         btn.addEventListener("click", async (e) => {
