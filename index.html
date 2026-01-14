@@ -3,36 +3,47 @@
     <head>
         <title>Albert Kemp</title>
         <link rel="stylesheet" href="styles/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <nav>
-            <button id="Melbourne">Melbourne</button>
-            <button id="Bermagui">Bermagui</button>
-            <button id="Botanics">Botanics</button>
-            <button id="Metung">Metung</button>
-            <button id="PortFairy">Port Fairy</button>
-            <button id="Qld">Queensland</button>
-            <button id="WTP">Western Treatment Plant</button>
-            <button id="Misc">Misc</button>
-            <button class="Contact">Contact</button>
+            <!--<div class="liner">-->
+                <button id="Home">Home</button>
+
+                <button class="Contact" id="navContact">Contact</button>
+                <button id="galleries">Galleries</button>
+
+                <div id="more" class="hidden">
+                    <button id="Melbourne">Melbourne</button>
+                    <button id="Bermagui">Bermagui</button>
+                    <button id="Botanics">Botanics</button>
+                    <button id="Metung">Metung</button>
+                    <button id="PortFairy">Port Fairy</button>
+                    <button id="Qld">Queensland</button>
+                    <button id="WTP">Western Treatment Plant</button>
+                    <button id="Misc">Misc</button>
+                </div>
+            <!--</div>-->
         </nav>
+        <div id="ps"></div>
         <div id="fsc">
             
         </div>
         <div id="lod">
             <h1>loading..</h1>
-            <p>When the page loads, try clicking on the images to enlarge</p>
+            <p>We're caching the images so you won't have to wait again</p>
             <p>Page not loading? <button class="link Contact">Contact me</button></p>
         </div>
         <div id="container">
             <div class="background">
-                <img src="images/Melbourne/img50.JPG">
+                <img src="images/big/home.JPG">
                 <div class="cover">
                     <h2>Albert Kemp</h2>
                     <p>Photos of birds and other stuff.</p>
                 </div>
             </div>
         </div>
+        <div id="galleryContainer"></div>
         <footer>&copy; 2025 Albert Kemp. All rights reserved. <button class="link" id="ToS">Terms of Service</button></footer>
         <script src="scripts/main.js"></script>
     </body>

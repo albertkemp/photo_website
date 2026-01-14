@@ -1,10 +1,10 @@
-const CACHE_NAME = 'image-cache-v1';
+/*const CACHE_NAME = 'image-cache-v1';
 
 self.addEventListener('fetch', (event) => {
   if (event.request.destination === 'image') {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) return cachedResponse;
+        if (cachedResponse) return cachedResponse/*else{localStorage.setItem("locked", "True")}*//*
 
         return fetch(event.request).then((networkResponse) => {
           return caches.open(CACHE_NAME).then((cache) => {
@@ -15,4 +15,4 @@ self.addEventListener('fetch', (event) => {
       })
     );
   }
-});
+});*/

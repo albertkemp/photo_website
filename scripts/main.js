@@ -1,16 +1,66 @@
 //Serivce worker register:
+/*
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
         .then(reg => console.log('Service Worker registered!', reg))
         .catch(err => console.err('Registration failed:', err));
     });
-  }
+  }*/
 //
 
+const navContact = document.querySelector("#navContact");
+const home = document.getElementById("Home");
+const ToS = document.getElementById("ToS");
+const galleries = document.getElementById("galleries");
+const more  = document.getElementById("more");
 
+galleries.addEventListener("click", ()=>{
+    more.classList.toggle("hidden");
+    home.classList.remove("focus");
+    ToS.classList.remove("focus");
+    navContact.classList.remove("focus");
+});
+ToS.addEventListener("click", ()=>{
+    document.getElementById("galleryContainer").innerHTML="";
+    document.getElementById("container").innerHTML="<h1>Terms of Service</h1><p>All photographs on this website are the exclusive property of Albert Kemp and are protected under Australian and international copyright laws. You may not copy, reproduce, distribute, or sell these images in any form without express written permission.</p><p>I love sharing photos with people but please follow the rules by contacting me through the <button class='Contact link'>Contact</button> page</p><img src='images/big/pinkearedduck.JPG' height='400'><p>Pink eared duck</p>"
+});
+window.addEventListener('message', (event) => {
+    if (event.data && event.data.includes('Tally.FormSubmitted')) {
+        document.getElementById("message-hider").innerHTML="Form submitted successfully!(:"
+    }
+  });
+let descripOn = false;
 const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc");
 const [Melbourne, Bermagui, Botanics, Metung, PortFairy, Qld, WTP, Misc] = elements;
+function changeContent(){
+    const ps = document.getElementById("ps");
+    const nav = document.getElementsByTagName("nav")[0];
+    ps.style.height=nav.getBoundingClientRect().height;
+    /*
+    if (window.innerWidth<=688){
+        Melbourne.textContent="MEL";
+        Bermagui.textContent="BER";
+        Botanics.textContent="BOT";
+        Metung.textContent="MET";
+        PortFairy.textContent="PFY";
+        Qld.textContent="QLD";
+        WTP.textContent="WTP";
+        Misc.textContent="MSC";
+    } else{
+        Melbourne.textContent="Melbourne";
+        Bermagui.textContent="Bermagui";
+        Botanics.textContent="Botanics";
+        Metung.textContent="Metung";
+        PortFairy.textContent="Port Fairy";
+        Qld.textContent="Queensland";
+        WTP.textContent="Western Treatment Plant";
+        Misc.textContent="Misc";
+    }*/
+}
+document.addEventListener('DOMContentLoaded', changeContent);
+window.addEventListener('resize', changeContent);
+
 let pageData;
 
 fetch('data/index.json')
@@ -34,61 +84,86 @@ async function backBurner() {
         }
     }
 }*/
+let currentRequestId = 0; // Global tracker
 function renderPage() {
     elements.forEach(btn => {
-        btn.addEventListener("click", async (e) => {
-            const lod = document.getElementById("lod");
-            lod.style.display="block";
-            console.log(e.target.id);
-            const folder_name = pageData[e.target.id].folder_name;
-            const folder_number = pageData[e.target.id].folder_number;
-            const container = document.body.querySelector("#container");
-            container.innerHTML = "";
+        btn.addEventListener("click", (e) => {
+            elements.forEach(b => b.classList.remove("focus"));
+            more.classList.add("hidden");
+            e.target.classList.add("focus");
 
+            const requestId = ++currentRequestId;
+            const lod = document.getElementById("lod");
+            //lod.style.display = "block";
             
-            for (let i = 1; i <= folder_number; i++) {
-                
-                await new Promise((resolve) => {
-                    const img = new Image();
-                    img.src = `images/${folder_name}/img${i}.JPG`;
-                    img.height = 200;
-                    img.title = "(c) Albert Kemp";
-                    
-                    img.onload = () => {
-                        container.appendChild(img);
-                        if (i>5) {
-                            lod.style.display="none";
+            const { folder_name, folder_number, title, description, bg_image } = pageData[e.target.id];
+            const container = document.querySelector("#container");
+            const galleryContainer = document.querySelector("#galleryContainer");
+
+            container.innerHTML = `<div class="zbackground">
+                <img src="images/big/${bg_image}.JPG">
+                <div class="zcover"><h2>${title}</h2><p>${descripOn ? description : ""}</p></div>
+            </div>`;
+            galleryContainer.innerHTML = "";
+
+            let visibleImagesToLoad = 0;
+
+            // This detects if an image is on the screen
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (!img.complete) {
+                            visibleImagesToLoad++;
+                            img.onload = () => {
+                                visibleImagesToLoad--;
+                                if (visibleImagesToLoad <= 0) lod.style.display = "none";
+                            };
                         }
-                        resolve();
-                    };
-        
-                    img.onerror = () => {
-                        console.log(`Skipping img${i}`);
-                        resolve();
-                    };
+                    }
                 });
+            });
+
+            for (let i = 1; i <= folder_number; i++) {
+                if (requestId !== currentRequestId) return;
+
+                const img = document.createElement("img");
+                img.src = `small/${folder_name}/img${i}.JPG`;
+                img.classList.add("gallery");
+                img.height = 200;
+                img.loading = "lazy";
+
+                const newDiv = document.createElement("div");
+                newDiv.className = "stickyCont";
+                newDiv.appendChild(img);
+                galleryContainer.appendChild(newDiv);
+
+                // Start watching this image
+                observer.observe(img);
             }
         });
     });
 }
 let bgUp =false;
 document.addEventListener("click", (e) => {
-    if (bgUp) {
+    if (bgUp/*&&!localStorage.getItem("locked")==="True"*/) {
         fsc.style.display="none";
+        document.body.style.cursor="default";
         bgUp = false;
     } else {
     
-    if (e.target.tagName === "IMG") {
+    if (e.target.tagName === "IMG" && window.innerWidth>596) {
         console.log("Image clicked!"); 
         
         const fsc = document.getElementById("fsc");
         const innerImage = document.createElement("img");
         
-        innerImage.src = e.target.src;
+        innerImage.src = e.target.src.replace("/small/", "/images/");
         innerImage.id = "inim";
         fsc.innerHTML="";
         fsc.appendChild(innerImage);
         fsc.style.display = "block";
+        document.body.style.cursor="pointer";
         bgUp = true;
     }
     }
@@ -109,7 +184,7 @@ document.addEventListener('keydown', function(event) {
         const match = inim.src.match(/(\d+)(?=\.\w+$)/);
         if (match) {
             const currentNum = parseInt(match[0]);
-            const totalImages = document.querySelector("#container").getElementsByTagName('img').length;
+            const totalImages = document.querySelector("#galleryContainer").getElementsByTagName('img').length;
     
             if (currentNum < totalImages) {
                 inim.src = inim.src.replace(/(\d+)(?=\.\w+$)/, currentNum + 1);
@@ -129,4 +204,41 @@ document.addEventListener('keydown', function(event) {
             }
         }
     }
+});
+const contacts = document.querySelectorAll(".Contact");
+
+contacts.forEach((e)=>{
+    e.addEventListener("click", ()=>{
+        //ADD YOUR CONTACT FUNCTIONALITY HERE
+        galleryContainer.innerHTML="";
+        container.innerHTML=`
+        <div id="message-hider">
+            <iframe src="https://tally.so/r/D4p4RN" style="width:400px;height:600px;position:absolute;top:-2px;left:-2px;">
+        </div>`;
+    });
+});
+navContact.addEventListener("click", ()=>{
+    elements.forEach(btn => {
+        btn.classList.remove("focus");
+    });
+    home.classList.remove("focus");
+    navContact.classList.add("focus");
+});
+home.addEventListener("click", ()=> {
+    elements.forEach(btn => {
+        btn.classList.remove("focus");
+    });
+    navContact.classList.remove("focus");
+    home.classList.add("focus");
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+    galleryContainer.innerHTML = "";
+    container.insertAdjacentHTML("beforeend", `            
+        <div class="background">
+                <img src="images/big/home.JPG">
+                <div class="cover">
+                    <h2>Albert Kemp</h2>
+                    <p>Photos of birds and other stuff.</p>
+                </div>
+            </div>`);
 });
