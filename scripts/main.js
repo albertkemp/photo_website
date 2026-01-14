@@ -61,11 +61,18 @@ document.addEventListener('DOMContentLoaded', changeContent);
 window.addEventListener('resize', changeContent);
 
 let pageData;
-
+let elements = []
 fetch('data/index.json')
   .then(response => response.json())
   .then(data => {
       pageData = data.pages;
+      for (page in pageData) {
+        let btn = document.createElement("button");
+        btn.id=pageData[page];
+        btn.textContent=pageData[page].title;
+        elements.push(btn);
+        more.appendChild(btn);
+      }
       console.log(pageData)
       renderPage();
       //backBurner();
@@ -73,7 +80,9 @@ fetch('data/index.json')
   .catch(error => {
     console.error('Error fetching the JSON file:', error);
   });
-  const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc, #s2026");
+ 
+
+  //const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc, #s2026");
   /*
 async function backBurner() {
     for (data in pageData) {
@@ -87,6 +96,32 @@ async function backBurner() {
 }*/
 let currentRequestId = 0; // Global tracker
 function renderPage() {
+
+navContact.addEventListener("click", ()=>{
+    elements.forEach(btn => {
+        btn.classList.remove("focus");
+    });
+    home.classList.remove("focus");
+    navContact.classList.add("focus");
+});
+home.addEventListener("click", ()=> {
+    elements.forEach(btn => {
+        btn.classList.remove("focus");
+    });
+    navContact.classList.remove("focus");
+    home.classList.add("focus");
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+    galleryContainer.innerHTML = "";
+    container.insertAdjacentHTML("beforeend", `            
+        <div class="background">
+                <img src="images/big/home.JPG">
+                <div class="cover">
+                    <h2>ALBERT KEMP</h2>
+                    <p>Photos of birds and other stuff.</p>
+                </div>
+            </div>`);
+});
     elements.forEach(btn => {
         btn.addEventListener("click", (e) => {
             elements.forEach(b => b.classList.remove("focus"));
@@ -241,29 +276,4 @@ contacts.forEach((e)=>{
 
         `;
     });
-});
-navContact.addEventListener("click", ()=>{
-    elements.forEach(btn => {
-        btn.classList.remove("focus");
-    });
-    home.classList.remove("focus");
-    navContact.classList.add("focus");
-});
-home.addEventListener("click", ()=> {
-    elements.forEach(btn => {
-        btn.classList.remove("focus");
-    });
-    navContact.classList.remove("focus");
-    home.classList.add("focus");
-    const container = document.getElementById("container");
-    container.innerHTML = "";
-    galleryContainer.innerHTML = "";
-    container.insertAdjacentHTML("beforeend", `            
-        <div class="background">
-                <img src="images/big/home.JPG">
-                <div class="cover">
-                    <h2>ALBERT KEMP</h2>
-                    <p>Photos of birds and other stuff.</p>
-                </div>
-            </div>`);
 });
