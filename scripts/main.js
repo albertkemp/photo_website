@@ -31,7 +31,7 @@ window.addEventListener('message', (event) => {
     }
   });
 let descripOn = false;
-const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc, #s2026");
+
 function changeContent(){
     const ps = document.getElementById("ps");
     const nav = document.getElementsByTagName("nav")[0];
@@ -72,7 +72,9 @@ fetch('data/index.json')
   })
   .catch(error => {
     console.error('Error fetching the JSON file:', error);
-  });/*
+  });
+  const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc, #s2026");
+  /*
 async function backBurner() {
     for (data in pageData) {
         for (let i = 0; i < Math.floor(pageData[data].folder_number/2); i++) {
@@ -127,7 +129,12 @@ function renderPage() {
                 if (requestId !== currentRequestId) return;
 
                 const img = document.createElement("img");
-                img.src = `small/${folder_name}/img${i}.JPG`;
+                if (window.innerWidth>596) {
+                    img.src = `small/${folder_name}/img${i}.JPG`;
+                } else{
+                    img.src = `images/${folder_name}/img${i}.JPG`;
+                }
+                
                 img.classList.add("gallery");
                 img.height = 200;
                 img.loading = "lazy";
@@ -245,7 +252,7 @@ home.addEventListener("click", ()=> {
         <div class="background">
                 <img src="images/big/home.JPG">
                 <div class="cover">
-                    <h2>Albert Kemp</h2>
+                    <h2>ALBERT KEMP</h2>
                     <p>Photos of birds and other stuff.</p>
                 </div>
             </div>`);
