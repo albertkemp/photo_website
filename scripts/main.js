@@ -27,7 +27,7 @@ ToS.addEventListener("click", ()=>{
 });
 window.addEventListener('message', (event) => {
     if (event.data && event.data.includes('Tally.FormSubmitted')) {
-        document.getElementById("message-hider").innerHTML="Form submitted successfully!(:"
+        document.getElementById("message-hider").innerHTML="<h1>Form submitted successfully</h1><img src='images/check.svg' height='100' width='100'>";
     }
   });
 let descripOn = false;
@@ -187,8 +187,12 @@ document.addEventListener('keydown', function(event) {
             const totalImages = document.querySelector("#galleryContainer").getElementsByTagName('img').length;
     
             if (currentNum < totalImages) {
+                inim.style.opacity="0.3";
                 inim.src = inim.src.replace(/(\d+)(?=\.\w+$)/, currentNum + 1);
             }
+            inim.onload = () => {
+                inim.style.opacity="1";
+            };
         }
     }
     
@@ -200,8 +204,12 @@ document.addEventListener('keydown', function(event) {
             const currentNum = parseInt(match[0]);
     
             if (currentNum > 1) {
+                inim.style.opacity="0.3";
                 inim.src = inim.src.replace(/(\d+)(?=\.\w+$)/, currentNum - 1);
             }
+            inim.onload = () => {
+                inim.style.opacity="1";
+            };
         }
     }
 });
@@ -214,7 +222,8 @@ contacts.forEach((e)=>{
         container.innerHTML=`
         <div id="message-hider">
             <iframe src="https://tally.so/r/D4p4RN" style="width:400px;height:600px;position:absolute;top:-2px;left:-2px;">
-        </div>`;
+        </div>
+        <img src=`;
     });
 });
 navContact.addEventListener("click", ()=>{

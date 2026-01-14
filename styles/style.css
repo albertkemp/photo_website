@@ -140,11 +140,12 @@ nav button:focus{
 }
 #message-hider{
     width:400px;
-    height:538px;
+    height:545px;
     overflow: hidden;
     border: none;
     position: relative;
-    border: 1px solid black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 iframe{scrollbar-width: none;}
 .link {
