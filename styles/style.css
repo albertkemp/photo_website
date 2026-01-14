@@ -45,7 +45,7 @@
     text-align: center;
     left:0;
     top:0;
-    z-index: -5;
+    z-index: 1;
 }
 .zbackground{
     width: 100%;
@@ -178,6 +178,7 @@ footer{
     padding: 10px;
     opacity:0.8;
     font-family: 'Inter 18pt', sans-serif;
+    z-index:2;
 }
 body {
 margin-left:15%;

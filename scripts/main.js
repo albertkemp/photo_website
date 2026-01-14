@@ -27,7 +27,7 @@ ToS.addEventListener("click", ()=>{
 });
 window.addEventListener('message', (event) => {
     if (event.data && event.data.includes('Tally.FormSubmitted')) {
-        document.getElementById("message-hider").innerHTML="<h1>Form submitted successfully</h1><img src='images/check.svg' height='100' width='100'>";
+        document.getElementById("message-hider").innerHTML="<h1>Form submitted successfully</h1><img src='images/check.svg' height='100' width='100' style='height:100px;width:100px;'>";
     }
   });
 let descripOn = false;
@@ -90,6 +90,9 @@ function renderPage() {
     elements.forEach(btn => {
         btn.addEventListener("click", (e) => {
             elements.forEach(b => b.classList.remove("focus"));
+            home.classList.remove("focus");
+            navContact.classList.remove("focus");
+            ToS.classList.remove("focus");
             more.classList.add("hidden");
             e.target.classList.add("focus");
 
@@ -223,13 +226,20 @@ const contacts = document.querySelectorAll(".Contact");
 
 contacts.forEach((e)=>{
     e.addEventListener("click", ()=>{
-        //ADD YOUR CONTACT FUNCTIONALITY HERE
-        galleryContainer.innerHTML="";
-        container.innerHTML=`
-        <div id="message-hider">
-            <iframe src="https://tally.so/r/D4p4RN" style="width:400px;height:600px;position:absolute;top:-2px;left:-2px;">
+        galleryContainer.innerHTML = "";
+        
+        // Use a template literal with a flex wrapper to ensure the image sits NEXT to the iframe
+        container.innerHTML = `
+        <div class="background">
+        <img src="images/big/pinkearedducks.JPG">
+        <div class="cover" style="background-color:rgba(0, 0, 0, 0);">
+                    <div id="message-hider">
+                <iframe src="https://tally.so/r/D4p4RN" style="width:400px;height:600px;position:absolute;top:-2px;left:-2px;"></iframe>
+            </div>
         </div>
-        <img src="images/big/pinkearedducks.JPG" height="545">`;
+        </div>
+
+        `;
     });
 });
 navContact.addEventListener("click", ()=>{
