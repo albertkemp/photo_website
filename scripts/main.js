@@ -31,8 +31,7 @@ window.addEventListener('message', (event) => {
     }
   });
 let descripOn = false;
-const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc");
-const [Melbourne, Bermagui, Botanics, Metung, PortFairy, Qld, WTP, Misc] = elements;
+const elements = document.querySelectorAll("#Melbourne, #Bermagui, #Botanics, #Metung, #PortFairy, #Qld, #WTP, #Misc, #s2026");
 function changeContent(){
     const ps = document.getElementById("ps");
     const nav = document.getElementsByTagName("nav")[0];
@@ -223,7 +222,7 @@ contacts.forEach((e)=>{
         <div id="message-hider">
             <iframe src="https://tally.so/r/D4p4RN" style="width:400px;height:600px;position:absolute;top:-2px;left:-2px;">
         </div>
-        <img src=`;
+        <img src="images/big/pinkearedducks.JPG" height="545">`;
     });
 });
 navContact.addEventListener("click", ()=>{
