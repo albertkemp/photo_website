@@ -62,6 +62,13 @@
             "folder_number": "65",
             "description": "It's called the Western Treatment Plant but I simply call it Werribee. For birds, it's a heaven with countless waterbirds, shorebirds and even raptors. The images speak for themselves.",
             "bg_image": "stilt"
+        },
+        "ptmelb": {
+            "folder_name": "ptmelb",
+            "title": "Port Melbourne",
+            "folder_number": "30",
+            "description": "Gulls and a tern contrast with the smog of Melbourne",
+            "bg_image": "flock"
         }
     }
 }
