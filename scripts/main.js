@@ -68,7 +68,7 @@ fetch('data/index.json')
       pageData = data.pages;
       for (page in pageData) {
         let btn = document.createElement("button");
-        btn.id=pageData[page];
+        btn.id=pageData[page].folder_name;
         btn.textContent=pageData[page].title;
         elements.push(btn);
         more.appendChild(btn);
