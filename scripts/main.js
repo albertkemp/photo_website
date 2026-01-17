@@ -191,7 +191,8 @@ home.addEventListener("click", ()=> {
 let bgUp =false;
 document.addEventListener("click", (e) => {
     if (bgUp/*&&!localStorage.getItem("locked")==="True"*/) {
-        fsc.style.display="none";
+        const fsc = document.getElementById("fsc");
+        fsc.classList.toggle("active");
         document.body.style.cursor="default";
         bgUp = false;
     } else {
@@ -199,14 +200,14 @@ document.addEventListener("click", (e) => {
     if (e.target.tagName === "IMG" && window.innerWidth>596) {
         console.log("Image clicked!"); 
         
-        const fsc = document.getElementById("fsc");
+        
         const innerImage = document.createElement("img");
         
         innerImage.src = e.target.src.replace("/small/", "/images/");
         innerImage.id = "inim";
         fsc.innerHTML="";
         fsc.appendChild(innerImage);
-        fsc.style.display = "block";
+        fsc.classList.toggle("active");
         document.body.style.cursor="pointer";
         bgUp = true;
     }
@@ -218,7 +219,7 @@ document.addEventListener('keydown', function(event) {
     
     if (event.key === 'Escape' || event.key === ' ') {
         event.preventDefault();
-        fsc.style.display="none";
+        fsc.classList.toggle("active");
         bgUp = false;
     }
     const inim = document.getElementById("inim");
