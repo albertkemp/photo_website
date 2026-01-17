@@ -23,7 +23,7 @@ galleries.addEventListener("click", ()=>{
 });
 ToS.addEventListener("click", ()=>{
     document.getElementById("galleryContainer").innerHTML="";
-    document.getElementById("container").innerHTML="<div class='flexy'><div><h1>Terms of Service</h1><p>All photographs on this website are the exclusive property of Albert Kemp and are protected under Australian and international copyright laws. You may not copy, reproduce, distribute, or sell these images in any form without express written permission.</p><p>I love sharing photos with people but please follow the rules by contacting me through the <button class='Contact link'>Contact</button> page</p></div><div><img id='sgl' src='images/big/moregull.JPG' height='400'><p>Silver gull</p></div></div>"
+    document.getElementById("container").innerHTML="<div class='flexy'><div><h1>Terms of Service</h1><p>All photographs on this website are the exclusive property of Albert Kemp and are protected under Australian and international copyright laws. You may not copy, reproduce, distribute, or sell these images in any form without express written permission.</p><p>I love sharing photos with people but please follow the rules by contacting me through the Contact page</p></div><div><img id='sgl' src='images/big/moregull.JPG' height='400'><p>Silver gull</p></div></div>"
 });
 window.addEventListener('message', (event) => {
     if (event.data && event.data.includes('Tally.FormSubmitted')) {
