@@ -23,7 +23,7 @@ galleries.addEventListener("click", ()=>{
 });
 ToS.addEventListener("click", ()=>{
     document.getElementById("galleryContainer").innerHTML="";
-    document.getElementById("container").innerHTML="<div class='flexy'><div><h1>Terms of Service</h1><p>All photographs on this website are the exclusive property of Albert Kemp and are protected under Australian and international copyright laws. You may not copy, reproduce, distribute, or sell these images in any form without express written permission.</p><p>I love sharing photos with people but please follow the rules by contacting me through the Contact page</p></div><div><img id='sgl' src='images/big/moregull.JPG' height='400'><p>Silver gull</p></div></div>"
+    document.getElementById("container").innerHTML="<div class='flexy'><div><h1>Terms of Service</h1><p>All photographs on this website are the exclusive property of Albert Kemp and are protected under Australian and international copyright laws. You may not copy, reproduce, distribute, or sell these images in any form without express written permission.</p><p>I love sharing photos with people but please follow the rules by contacting me through the Contact page</p></div><div><img id='sgl' src='medium/big/moregull.JPG' height='400'><p>Silver gull</p></div></div>"
 });
 window.addEventListener('message', (event) => {
     if (event.data && event.data.includes('Tally.FormSubmitted')) {
@@ -115,7 +115,7 @@ home.addEventListener("click", ()=> {
     galleryContainer.innerHTML = "";
     container.insertAdjacentHTML("beforeend", `            
         <div class="background">
-                <img src="images/big/home.JPG">
+                <img src="medium/big/home.JPG">
                 <div class="cover">
                     <h2>ALBERT KEMP</h2>
                     <p>Photos of birds and other stuff.</p>
@@ -140,7 +140,7 @@ home.addEventListener("click", ()=> {
             const galleryContainer = document.querySelector("#galleryContainer");
 
             container.innerHTML = `<div class="zbackground">
-                <img src="images/big/${bg_image}.JPG">
+                <img src="medium/big/${bg_image}.JPG">
                 <div class="zcover"><h2>${title}</h2><p>${descripOn ? description : ""}</p></div>
             </div>`;
             galleryContainer.innerHTML = "";
@@ -167,11 +167,9 @@ home.addEventListener("click", ()=> {
                 if (requestId !== currentRequestId) return;
 
                 const img = document.createElement("img");
-                if (window.innerWidth>596) {
-                    img.src = `small/${folder_name}/img${i}.JPG`;
-                } else{
-                    img.src = `images/${folder_name}/img${i}.JPG`;
-                }
+
+                img.src = `small/${folder_name}/img${i}.JPG`;
+
                 
                 img.classList.add("gallery");
                 img.height = 200;
@@ -203,7 +201,7 @@ document.addEventListener("click", (e) => {
         
         const innerImage = document.createElement("img");
         
-        innerImage.src = e.target.src.replace("/small/", "/images/");
+        innerImage.src = e.target.src.replace("/small/", "/medium/");
         innerImage.id = "inim";
         fsc.innerHTML="";
         fsc.appendChild(innerImage);
@@ -267,7 +265,7 @@ contacts.forEach((e)=>{
         // Use a template literal with a flex wrapper to ensure the image sits NEXT to the iframe
         container.innerHTML = `
         <div class="background">
-        <img src="images/big/pinkearedducks.JPG">
+        <img src="medium/big/pinkearedducks.JPG">
         <div class="cover" style="background-color:rgba(0, 0, 0, 0);">
                     <div id="message-hider">
                 <iframe src="https://tally.so/r/D4p4RN" style="width:400px;height:600px;position:absolute;top:-2px;left:-2px;"></iframe>
